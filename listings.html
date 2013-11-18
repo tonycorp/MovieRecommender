@@ -1,0 +1,26 @@
+{% autoescape true %}
+                <!-- Main Wrapper -->
+                        <div id="main-wrapper">
+
+                                <!-- Main -->
+                                        <div id="main" class="container">
+                                                <div class="row">
+                                                
+                                                        <!-- Content -->
+                                                                <div id="content" class="12u skel-cell-mainContent">
+
+                                                                        <!-- Post -->
+                                                                                {% for movie in movies %}
+                                                                                <article class="is-excerpt">
+                                                                                        <span class="image image-left"><img src="{{ movie.movieimg }}" alt="movieimage" width="100" height="100"/></span>
+                                                                                        <h3>{{ movie.movietitle}}</h3>
+                                                                                </article>
+                                                                                {% endfor %}
+                                                                
+                                                                </div>
+                                                                
+                                                </div>
+                                        </div>
+
+                        </div>
+{% endautoescape %}
