@@ -13,3 +13,9 @@ class Similarity(ndb.Model):
 	userA = ndb.UserProperty()
 	userB = ndb.UserProperty()
 	similarity = ndb.FloatProperty()
+
+class UserRecord(ndb.Model):
+	username = ndb.UserProperty()
+	totalratings = ndb.IntegerProperty()
+	numofratings = ndb.IntegerProperty()
+	averagerating = ndb.FloatProperty()
