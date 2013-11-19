@@ -1,0 +1,45 @@
+{% autoescape true %}
+                <!-- Main Wrapper -->
+                        <div id="main-wrapper">
+
+                                <!-- Main -->
+                                        <div id="main" class="container">
+                                                <div class="row">
+                                                
+                                                        <!-- Content -->
+                                                                <div id="content" class="12u skel-cell-mainContent">
+
+                                                                        <!-- Post -->
+                                                                                {% for movie in movies %}
+                                                                                <article class="is-post">
+                                                                                        <span class="image image-left"><img src="{{ movie.movieimg }}" alt="movieimage" width="100" height="100"/></span>
+                                                                                        <h3>{{ movie.movietitle}}</h3>
+                                                                                        <form id="addRatingForm" class="row" method="post" action"#">
+                                                                                                <div class="row" hidden="true">
+                                                                                                                                <div class="12u">
+                                                                                                                                        
+                                                                                                <textarea name="movietitle" hidden>{{ movie.movietitle }}</textarea>
+                                                                                                                                </div>
+                                                                                                                        </div>
+                                                                                                <ul class="form">
+                                                                                                        <li class="rating">
+                                                                                                                {% for i in range(1, 6) %}
+                                                                                                                <input type="radio" name="rating" value="{{i}}" 
+                                                                                                                {% if rating == i %} checked {% endif %}
+                                                                                                                /><span>{{i}}</span>
+                                                                                                                {% endfor %}
+                                                                                                        </li>
+                                                                                                </ul>
+                                                                                                <div class="12u">
+                                                                                                        <a id="addRatingButton" class="button button-icon icon icon-thumbsup">Rate Movie</a>
+                                                                                                </div>
+                                                                                        </form>
+                                                                                </article>
+                                                                                {% endfor %}
+                                                                </div>
+                                                                
+                                                </div>
+                                        </div>
+
+                        </div>
+{% endautoescape %}

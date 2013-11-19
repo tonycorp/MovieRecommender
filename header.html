@@ -22,22 +22,19 @@
                 <script src="js/modal.js"></script>
                 <script type="text/javascript">
                         $(document).ready(function(){
-                                $("#sendMail").click(function(e){
-                                        $.post('send_email', $("#sendMailForm").serialize(), function(data){
-                                                if (data === 'The lovers have been notified') {
-                                                        $("#mailContent").val("");
-                                                        $("#mailName").val("");
-                                                }
-                                                modal.open({content: data});
-                                        });
-                                        return false;
-                                });
                                 $("#importMoviesButton").click(function(e){
                                         $.post('importmovies', function(data){
                                         });
                                         return false;
                                 });
+                                 $("#addRatingButton").click(function(e){
+                                        $.post('addrating', $("#addRatingForm").serialize(), function(data){
+                                                alert("Your Rating Has Been Recorded")
+                                        });
+                                        return false;
+                                });
                         });
+                       
                 </script>
                 <style type="text/css">
                         #overlay {
@@ -101,7 +98,8 @@
                                                                 <ul>
                                                                         <li><a class="icon icon-home" href="./"><span>Home</span></a></li>
                                                                         <li><a class="icon icon-sitemap" href="listings"><span>The Movie List</span></a></li>
-                                                                        <li><a class="icon icon-dashboard" href="admin"><span>Admin</span></a></li>
+                                                                        <li><a class="icon icon-dashboard" href="userzone"><span>User Zone</span></a></li>
+                                                                        <li><a class="icon icon-signout" href="{{ logout }}"><span>Logout</span></a></li>
                                                                 </ul>
                                                         </nav>
 

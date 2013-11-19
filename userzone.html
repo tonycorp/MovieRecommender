@@ -10,13 +10,11 @@
                                                                 <div id="content" class="12u skel-cell-mainContent">
 
                                                                         <!-- Post -->
-                                                                                {% for movie in movies %}
-                                                                                        {% if movie.movietitle != None %}
-                                                                                                <article class="is-excerpt">
-                                                                                                        <span class="image image-left"><img src="{{ movie.movieimg }}" alt="movieimage" width="100" height="100"/></span>
-                                                                                                        <h3><a class="movieLink" id="{{movie.movietitle}}" href="movie?movietitle={{movie.movietitle}}">{{ movie.movietitle}}</a></h3>
-                                                                                                </article>
-                                                                                        {% endif %}
+                                                                                {% for rating in ratings %}
+                                                                                <article class="is-excerpt">
+                                                                                        <h1>{{ rating.movierating }}</h1>
+                                                                                        <h3>{{ rating.movietitle }}</h3>
+                                                                                </article>
                                                                                 {% endfor %}
                                                                 
                                                                 </div>

@@ -1,6 +1,7 @@
 import os
 import jinja2
 import webapp2
+import logging
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from models import Movie
@@ -11,12 +12,22 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class Listings(webapp2.RequestHandler):
         def get(self):
-                template_values = {'movies' : Movie.query(),
-                'user_is_admin' : 'Yes' if users.is_current_user_admin() else 'No',}
+                user = users.get_current_user()
+                movies = Movie.query()
+
+                if user:
+                        template_values = {'movies' : movies}
+                        header_values = {'logout' : users.create_logout_url('/')}
+
+                        for movie in movies:
+                                logging.debug(movie.movietitle)
+
+                        template = JINJA_ENVIRONMENT.get_template('header.html')
+                        self.response.write(template.render(header_values))         
+                        template = JINJA_ENVIRONMENT.get_template('listings.html')
+                        self.response.write(template.render(template_values))
+                        template = JINJA_ENVIRONMENT.get_template('footer.html')
+                        self.response.write(template.render())
+                else:
+                    self.redirect(users.create_login_url(self.request.uri))
                 
-                template = JINJA_ENVIRONMENT.get_template('header.html')
-                self.response.write(template.render())         
-                template = JINJA_ENVIRONMENT.get_template('listings.html')
-                self.response.write(template.render(template_values))
-                template = JINJA_ENVIRONMENT.get_template('footer.html')
-                self.response.write(template.render())
