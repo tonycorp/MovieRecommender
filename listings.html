@@ -13,7 +13,6 @@
                                                                                 {% for movie in movies %}
                                                                                         {% if movie.movietitle != None %}
                                                                                                 <article class="is-excerpt">
-                                                                                                        <span class="image image-left"><img src="{{ movie.movieimg }}" alt="movieimage" width="100" height="100"/></span>
                                                                                                         <h3><a class="movieLink" id="{{movie.movietitle}}" href="movie?movietitle={{movie.movietitle}}">{{ movie.movietitle}}</a></h3>
                                                                                                 </article>
                                                                                         {% endif %}

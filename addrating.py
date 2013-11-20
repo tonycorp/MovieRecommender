@@ -57,4 +57,5 @@ class AddRating(webapp2.RequestHandler):
                 userRecord.put()
 
                 self.response.out.write(json.dumps(myresponse))
-                
+
+
